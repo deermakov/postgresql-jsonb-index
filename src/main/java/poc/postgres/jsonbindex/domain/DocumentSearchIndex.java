@@ -3,6 +3,7 @@ package poc.postgres.jsonbindex.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -10,12 +11,13 @@ import org.hibernate.type.SqlTypes;
 import java.util.UUID;
 
 @Entity
+@Table(name = "document")
 @Data
-public class Document {
+public class DocumentSearchIndex {
     @Id
-    @GeneratedValue(generator = "UUID")
     private UUID id;
 
-    @JdbcTypeCode(SqlTypes.JSON)
-    private Metadata metadata;
+    private String author;
+    private Integer year;
+    private Integer pages;
 }

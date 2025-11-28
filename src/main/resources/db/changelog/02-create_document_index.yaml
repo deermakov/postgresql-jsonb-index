@@ -1,0 +1,10 @@
+
+databaseChangeLog:
+  - changeSet:
+      id: 02-create_document_index
+      author: deermakov
+      changes:
+        - sql: CREATE INDEX idxgin ON DOCUMENT USING GIN (metadata);
+      rollback:
+        - dropTable:
+            tableName: DOCUMENT

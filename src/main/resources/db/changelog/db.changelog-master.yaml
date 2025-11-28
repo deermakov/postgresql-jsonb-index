@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: classpath:/db/changelog/01-create_document.yaml
+  - include:
+      file: classpath:/db/changelog/02-create_document_index.yaml
