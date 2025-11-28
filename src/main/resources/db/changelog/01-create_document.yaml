@@ -1,0 +1,23 @@
+
+databaseChangeLog:
+  - changeSet:
+      id: 01-create_document
+      author: deermakov
+      changes:
+        - createTable:
+            tableName: DOCUMENT
+            columns:
+              - column:
+                  name: ID
+                  type: UUID
+              - column:
+                  name: CONTENT
+                  type: JSONB
+        - addPrimaryKey:
+            columnNames: ID
+            constraintName: PK_DOCUMENT
+            tableName: DOCUMENT
+            validate: true
+      rollback:
+        - dropTable:
+            tableName: DOCUMENT
