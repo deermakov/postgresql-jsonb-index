@@ -9,6 +9,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface DocumentSearchIndexRepository extends CrudRepository<DocumentSearchIndex, UUID> {
-    @Query(value = "SELECT * FROM document WHERE metadata -> author = ?1", nativeQuery = true)
+    @Query(value = "SELECT id, metadata->'author' as author, metadata->'year' as year, metadata->'pages' as pages FROM document WHERE metadata ->> 'author' = ?1", nativeQuery = true)
     List<DocumentSearchIndex> findByAuthor(String author);
 }
