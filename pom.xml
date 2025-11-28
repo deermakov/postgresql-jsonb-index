@@ -13,22 +13,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>postgresql-jsonb-index</name>
     <description>postgresql-jsonb-index</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
-    <properties>
+    <!--properties>
         <java.version>25</java.version>
-    </properties>
+    </properties-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
