@@ -1,5 +1,7 @@
 databaseChangeLog:
   - include:
       file: classpath:/db/changelog/01-create_document.yaml
+#  - include: такой индекс не нужен, если в DocumentSearchIndexRepository не используется native query по содержимому JSONB
+#      file: classpath:/db/changelog/02-create_document_index.yaml
   - include:
-      file: classpath:/db/changelog/02-create_document_index.yaml
+      file: classpath:/db/changelog/03-create_document_virtual_columns.yaml

@@ -1,0 +1,13 @@
+
+databaseChangeLog:
+  - changeSet:
+      id: 03-create_document_virtual_columns
+      author: deermakov
+      changes:
+        - sql: ALTER TABLE DOCUMENT ADD COLUMN author VARCHAR GENERATED ALWAYS AS ((metadata->>'author')::VARCHAR) STORED;
+        - sql: ALTER TABLE DOCUMENT ADD COLUMN year NUMERIC GENERATED ALWAYS AS ((metadata->>'year')::NUMERIC) STORED;
+        - sql: ALTER TABLE DOCUMENT ADD COLUMN pages NUMERIC GENERATED ALWAYS AS ((metadata->>'pages')::NUMERIC) STORED;
+      rollback:
+        - dropColumn:
+            tableName: DOCUMENT
+            indexName: author
