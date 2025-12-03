@@ -13,9 +13,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>postgresql-jsonb-index</name>
     <description>postgresql-jsonb-index</description>
-    <!--properties>
+
+    <properties>
         <java.version>25</java.version>
-    </properties-->
+        <docker.image.prefix>postgresql-jsonb-index</docker.image.prefix>
+    </properties>
+
     <dependencies>
         <!-- REST -->
         <dependency>
@@ -94,6 +97,30 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+
+            <!-- Docker Plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.13</version>
+                <configuration>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
